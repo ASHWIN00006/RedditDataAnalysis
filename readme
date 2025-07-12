@@ -1,0 +1,120 @@
+📊 Toxic Behavior in Reddit Gaming Communities – Final Year Project (MSc Data Analysis for Business Intelligence)
+📝 Project Description
+This repository contains the complete implementation of my final year dissertation project titled "Toxic Behavior in Reddit Gaming Communities", undertaken as part of the MSc in Data Analysis for Business Intelligence at the University of Leicester. The aim of this project was to explore and analyze toxic behavior in online gaming communities on Reddit using a combination of data science, network analysis, and natural language processing techniques.
+
+Toxicity in online spaces can significantly affect community health, user retention, and the overall experience of digital interaction. In gaming communities—where passion, competition, and subcultures collide—this toxicity can be particularly pronounced. This project aims to identify toxic users, evaluate their network influence, and recommend removals to improve sentiment while minimizing disruption to the community's social structure.
+
+🎯 Objectives
+Identify users who demonstrate toxic behaviors based on patterns of interaction, sentiment scores, and posting behaviors.
+
+Construct and analyze the social interaction network of Reddit users in selected gaming communities.
+
+Measure centrality, cohesion, and community clustering using Gephi.
+
+Use sentiment classification (via SVM) to assess the tone of user posts.
+
+Propose recommendations to reduce toxicity by identifying 10 users whose removal would increase average sentiment with minimal impact on the community structure.
+
+🧪 Tools & Technologies Used
+Reddit API + asyncpraw – for efficient asynchronous data scraping
+
+Python (pandas, nltk, sklearn) – for data processing, sentiment scoring, and topic modeling
+
+NLTK + VADER + SVM – for sentiment analysis
+
+Gephi – for social network analysis and interactive visualizations
+
+Excel + Power Query – for dataset cleaning, integration, and metric calculation
+
+GitHub – for code versioning, documentation, and project sharing
+
+📥 Data Collection
+Reddit data was gathered from five active gaming subreddits between January 1, 2025, and April 15, 2025, using the Reddit API. For each submission and comment, key data fields were extracted, including:
+
+submission_id, comment_id, parent_id
+
+source_author, target_author, post_score, comment_score
+
+post_title, text, created_utc, date, and time
+
+The network was formed by mapping reply relationships (source_author → target_author).
+
+🧼 Data Cleaning & Processing
+The raw dataset underwent thorough preprocessing:
+
+Deleted/null entries removed
+
+Duplicate interactions dropped
+
+Timestamps standardized
+
+Submissions and comments separated using ID structure
+
+Directed edge lists created for network modeling
+
+Sentiment scores generated using a hybrid VADER and SVM approach
+
+🌐 Network Analysis (Gephi)
+A directed social interaction network was constructed in Gephi, where:
+
+Nodes = Reddit users
+
+Edges = Interactions (comments/replies)
+
+Node Attributes: in-degree, out-degree, sentiment, clustering coefficient
+
+Edge Attributes: source → target, date, score, topic
+
+ForceAtlas2 layout was applied for network visualization, and modularity analysis was performed to detect sub-communities (clusters).
+
+Metrics computed include:
+
+Degree Centrality (In/Out) – to identify active vs. isolated users
+
+Clustering Coefficient – to measure cohesiveness
+
+Betweenness Centrality – to detect influential users or gatekeepers
+
+Closeness Centrality – to assess how easily a user can reach others
+
+Reciprocity – to evaluate mutual interaction
+
+🔍 Toxic Behavior Identification
+Users were evaluated using a combination of quantitative metrics and sentiment data. Specific toxicity indicators included:
+
+High out-degree, low in-degree (broadcast behavior)
+
+Low clustering coefficient and reciprocity (isolation)
+
+Consistently low sentiment and negative post scores
+
+Frequent targeting of specific users or controversial topics
+
+After ranking users using these combined signals, 10 users were shortlisted for potential removal. Network simulations revealed that removing most of these users improved sentiment while preserving structural integrity.
+
+📈 Key Visualizations
+Gephi-generated visualizations included:
+
+Modularity class grouping
+
+Ego networks for key influencers
+
+Node sizing by centrality, coloring by clustering coefficient
+
+Community-wide connectivity and sentiment distribution
+
+📌 Recommendations
+Remove low-reciprocity, low-clustering broadcast users with poor sentiment histories
+
+Retain structurally central but high-participation users to preserve community engagement
+
+Use clustering coefficient, sentiment, and betweenness centrality as a composite toxicity score for future moderation models
+
+Implement time-series tracking to monitor network sentiment shifts after interventions
+
+📚 Future Work
+Apply dynamic network modeling to capture time-based toxicity patterns
+
+Incorporate sarcasm/slang detection to improve sentiment accuracy
+
+Automate author flagging and dashboarding with real-time data ingestion
